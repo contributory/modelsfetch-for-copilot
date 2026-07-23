@@ -1,68 +1,68 @@
-# Copilot Custom Endpoint Model Fetcher (Hỗ trợ Fetch Model cho GitHub Copilot Custom Endpoint)
+# Copilot Custom Endpoint Model Fetcher
 
-VS Code Extension hỗ trợ tự động fetch danh sách models từ Custom Endpoint của bạn và cấu hình trực tiếp vào GitHub Copilot trên VS Code (thông qua file `chatLanguageModels.json`).
-
----
-
-## 🌟 Tính năng chính (Key Features)
-
-- **Tự động quét & tìm kiếm cấu hình**: Định vị chính xác file cấu hình `chatLanguageModels.json` của VS Code trên mọi nền tảng (Windows, macOS, Linux, VS Code Insiders).
-- **Tương thích hoàn toàn với chuẩn OpenAI**: Gửi yêu cầu tới `<Base URL>/models` bằng API Key để lấy toàn bộ danh sách models khả dụng.
-- **Tự động cấu hình thông minh (Smart Parameter Resolution)**:
-  - Nhận diện các model hỗ trợ **Vision** (ví dụ: `gpt-4o`, `claude-3-5`, `gemini`).
-  - Nhận diện và bật tính năng **Thinking/Reasoning** cho các model suy luận (ví dụ: `deepseek-reasoner`, `deepseek-r1`).
-  - Tự động điền **maxInputTokens** & **maxOutputTokens** tối ưu cho từng loại model phổ biến (ví dụ: DeepSeek, Claude, GPT, Gemini).
-  - Tự động bật **toolCalling: true** để đảm bảo model xuất hiện trong trình chọn (model picker) của Copilot Chat.
-- **Giao diện thân thiện (Interactive UI)**:
-  - Chọn cấu hình sẵn có hoặc tạo mới trực tiếp từ thanh Command Palette.
-  - Hỗ trợ chọn nhanh nhiều model cùng lúc (multi-select) bằng danh sách QuickPick.
-  - Giữ lại các cấu hình tuỳ chỉnh cũ (như giới hạn token, tên riêng) của bạn mà không lo bị ghi đè mất dữ liệu.
-- **An toàn bảo mật (Security First)**: Giữ nguyên cơ chế Secret Storage (`${input:chat.lm.secret.xxx}`) của VS Code và chỉ sử dụng API Key tạm thời để thực hiện fetch, không lưu trữ khóa dạng plaintext trừ khi được yêu cầu.
+VS Code Extension that automatically fetches model lists from your Custom Endpoint and configures them directly into GitHub Copilot on VS Code (via the `chatLanguageModels.json` file).
 
 ---
 
-## 🚀 Hướng dẫn sử dụng (How to Use)
+## 🌟 Key Features
 
-1. Nhấn tổ hợp phím `Ctrl + Shift + P` (hoặc `Cmd + Shift + P` trên macOS) để mở **Command Palette**.
-2. Tìm kiếm và chọn lệnh: **`Copilot Custom Endpoint: Fetch and Configure Models`**.
-3. **Chọn Nhà cung cấp (Provider)**:
-   - Chọn nhà cung cấp Custom Endpoint hiện có trong file `chatLanguageModels.json` của bạn.
-   - Hoặc chọn **`Create New Custom Endpoint Provider...`** để bắt đầu cấu hình một nhà cung cấp mới.
-4. **Nhập thông tin kết nối**:
-   - Nhập **Base URL** (ví dụ: `https://api.deepseek.com/v1` hoặc `http://localhost:11434/v1`).
-   - Nhập **API Key** (Key này chỉ dùng để gọi danh sách model, không lưu dưới dạng văn bản thuần túy nếu bạn đang sử dụng cơ chế bảo mật của VS Code).
-   - Chọn **API Type** (`chat-completions`, `messages`, hoặc `responses`).
-5. **Chọn Models**:
-   - Tích chọn các model bạn muốn đưa vào VS Code Copilot Chat từ danh sách được trả về.
-6. **Hoàn tất**:
-   - Hệ thống sẽ tự động ghép nối cấu hình mới vào `chatLanguageModels.json`.
-   - Một thông báo sẽ hiện lên xác nhận thành công và bạn có thể chọn **Open Config File** để xem và kiểm tra trực tiếp.
+- **Automatic Configuration Discovery**: Precisely locates the VS Code `chatLanguageModels.json` configuration file across all platforms (Windows, macOS, Linux, VS Code Insiders).
+- **Full OpenAI Standard Compatibility**: Sends requests to `<Base URL>/models` using an API Key to retrieve all available models.
+- **Smart Parameter Resolution**:
+  - Detects models with **Vision** support (e.g., `gpt-4o`, `claude-3-5`, `gemini`).
+  - Detects and enables **Thinking/Reasoning** for reasoning models (e.g., `deepseek-reasoner`, `deepseek-r1`).
+  - Automatically populates optimal **maxInputTokens** & **maxOutputTokens** for popular model types (e.g., DeepSeek, Claude, GPT, Gemini).
+  - Automatically enables **toolCalling: true** to ensure models appear in the Copilot Chat model picker.
+- **Interactive UI**:
+  - Select existing configurations or create new ones directly from the Command Palette.
+  - Quick multi-select multiple models at once using QuickPick lists.
+  - Preserves your existing custom configurations (token limits, custom names) without overwriting data.
+- **Security First**: Maintains VS Code's Secret Storage mechanism (`${input:chat.lm.secret.xxx}`) and only uses the API Key temporarily for fetching, never storing keys in plaintext unless explicitly requested.
 
 ---
 
-## 🛠️ Phát triển & Kiểm thử (Development & Testing)
+## 🚀 How to Use
 
-Nếu bạn muốn đóng góp hoặc tự đóng gói extension:
+1. Press `Ctrl + Shift + P` (or `Cmd + Shift + P` on macOS) to open the **Command Palette**.
+2. Search for and select the command: **`Copilot Custom Endpoint: Fetch and Configure Models`**.
+3. **Select Provider**:
+   - Choose an existing Custom Endpoint provider from your `chatLanguageModels.json` file.
+   - Or select **`Create New Custom Endpoint Provider...`** to start configuring a new provider.
+4. **Enter Connection Details**:
+   - Enter **Base URL** (e.g., `https://api.deepseek.com/v1` or `http://localhost:11434/v1`).
+   - Enter **API Key** (This key is only used to fetch the model list and is not stored in plaintext if you're using VS Code's security mechanism).
+   - Select **API Type** (`chat-completions`, `messages`, or `responses`).
+5. **Select Models**:
+   - Check the models you want to add to VS Code Copilot Chat from the returned list.
+6. **Complete**:
+   - The system will automatically merge the new configuration into `chatLanguageModels.json`.
+   - A confirmation notification will appear, and you can select **Open Config File** to view and verify directly.
+
+---
+
+## 🛠️ Development & Testing
+
+If you want to contribute or package the extension yourself:
 
 ```bash
-# Cài đặt thư viện dependencies
+# Install dependencies
 npm install
 
-# Chạy kiểm thử tự động (Unit Tests)
+# Run automated tests (Unit Tests)
 npm run test
 
-# Biên dịch mã nguồn TypeScript
+# Compile TypeScript source
 npm run compile
 
-# Đóng gói thành file cài đặt .vsix
+# Package as .vsix installable file
 npx --yes @vscode/vsce package --allow-missing-repository --skip-license
 ```
 
 ---
 
-## 📦 File cấu hình tham khảo (`chatLanguageModels.json` after setup)
+## 📦 Reference Configuration (`chatLanguageModels.json` after setup)
 
-Sau khi chạy extension, cấu hình trong file `chatLanguageModels.json` của bạn sẽ trông như thế này:
+After running the extension, your `chatLanguageModels.json` configuration will look like this:
 
 ```json
 [
@@ -98,6 +98,19 @@ Sau khi chạy extension, cấu hình trong file `chatLanguageModels.json` của
 ]
 ```
 
-## 📄 Giấy phép (License)
+---
 
-Sản phẩm được phát hành dưới giấy phép MIT.
+## 📄 License
+
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
+
+See the [LICENSE](LICENSE) file for the full license text.
+
+In summary, GPL-3.0 grants you the freedom to:
+- Use the software for any purpose
+- Study and modify the source code
+- Distribute copies of the software
+- Distribute your modified versions
+
+With the condition that any distributed copies or derivative works must also be licensed under GPL-3.0 and include the source code.
+```

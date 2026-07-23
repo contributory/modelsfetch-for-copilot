@@ -1,8 +1,8 @@
 {
   "name": "copilot-custom-manager",
-  "displayName": "Copilot Custom Endpoint Model Fetcher",
+  "displayName": "Copilot Custom Manager",
   "description": "Easily fetch and register models for GitHub Copilot Custom Endpoint providers in VS Code",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "publisher": "jules",
   "engines": {
     "vscode": "^1.90.0"
